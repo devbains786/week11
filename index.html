@@ -1,10 +1,20 @@
 <html>
     <head>
 
+       <title>First AJax </title>
        <script>
-           function changeContent(){
-          var theDiv=getDocumentById("content");
-          theDiv.innerHTML="<h1> 'Soon it will be summer'";
+        var xmlhttp;   
+        function getNum()
+           {
+           xmlhttp=new XMLHttpRequest();
+           xmlhttp.onreadystatechange=callBack;
+           }
+           //when info come back from the server
+           function callback(){
+               if(xmlhttp.readyState==4 && xmlhttp.status==200)
+               {
+                   document.getElementById('result').innerHTML=xmlhttp.responseText;
+               }
 
            }
     </script>
@@ -12,11 +22,11 @@
 
     <body>
 
-       <div id='content'>
-           <p>happy first day of spring!!</p>
+       <div id='result'>
+        
           
         </div>
-       <input type="button" value= "change content" onclick="changeContent()" />
+     <input type="button" value="get random nuber" onClick="getNum()">
        
 
     </body>
